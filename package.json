@@ -1,0 +1,10 @@
+{
+  "name": "didactic-invention",
+  "version": "0.0.1",
+  "description": "Simple, functional, DI library for JS",
+  "main": "index.js",
+  "repository": "https://github.com/pichardoJ/didactic-invention.git",
+  "author": "<j.pichardo@tuta.io>",
+  "license": "The Unlicense",
+  "private": false
+}
