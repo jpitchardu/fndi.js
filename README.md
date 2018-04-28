@@ -4,8 +4,20 @@ Simple, functional, DI library for JS
 
 ## Usage
 
+Install using yarn or npm
+
+```bash
+yarn add fndi
+
+npm install fndi
+```
+
+Getting started
+
 ```javascript
 // Function sintax
+const scope = require('fndi');
+
 function A() {}
 
 // Class Sintax
