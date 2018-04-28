@@ -1,6 +1,6 @@
-# didactic-invention
+# fnDI.js
 
-Simple, functional, DI library for JS
+Simple, functional, ligthweight, dependencyless DI library for JS
 
 ## Usage
 
