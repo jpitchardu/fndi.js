@@ -6,6 +6,11 @@
   "repository": "https://github.com/pichardoJ/fndi.js.git",
   "author": "<j.pichardo@tuta.io>",
   "license": "Unlicense",
+  "keywords": [
+    "ioc",
+    "functional",
+    "dependency-injection"
+  ],
   "private": false,
   "scripts": {
     "test": "jest",
