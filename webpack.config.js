@@ -2,7 +2,7 @@ const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  plugins: [new UglifyJsPlugin()],
+  // plugins: [new UglifyJsPlugin()],
   entry: path.join(__dirname, 'lib', 'index'),
   output: {
     filename: 'index.js',

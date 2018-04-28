@@ -1,20 +1,18 @@
 {
   "name": "fndi",
   "version": "0.1.1",
-  "description": "Simple, functional, ligthweight, dependencyless DI library for JS",
-  "main": "dist/index.js",
+  "description":
+    "Simple, functional, ligthweight, dependencyless DI library for JS",
+  "main": "lib/index.js",
   "repository": "https://github.com/pichardoJ/fndi.js.git",
   "author": "<j.pichardo@tuta.io>",
   "license": "Unlicense",
-  "keywords": [
-    "ioc",
-    "functional",
-    "dependency-injection"
-  ],
+  "keywords": ["ioc", "functional", "dependency-injection"],
   "private": false,
   "scripts": {
     "test": "jest",
-    "build": "webpack"
+    "build": "webpack",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
