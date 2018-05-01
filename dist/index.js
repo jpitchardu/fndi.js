@@ -68,7 +68,10 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 const functionRegex = /(?:(?:function)|(?:constructor))\s*[^\(]*\(\s*([^\)]*)\)/m;
 
@@ -77,8 +80,8 @@ function getDeps(fn) {
     ? fn
         .toString()
         .match(functionRegex)[1]
-        .replace(/ /g, '')
-        .split(',')
+        .replace(/ /g, "")
+        .split(",")
     : [];
 }
 
@@ -90,32 +93,34 @@ function scope(registration, fn) {
 
   registration(registryFn);
 
+  const privResolve = function(key) {
+    const entry = registry.find(
+      entry =>
+        (entry.name && entry.name.toUpperCase() === key) ||
+        entry.type.name.toString().toUpperCase() === key
+    );
+
+    const fnToResolve = entry.factory || entry.by || entry.type;
+
+    const fnResolve = entry.factory
+      ? func => func(resolve)
+      : func =>
+          Reflect.construct(func, getDeps(func).map(dep => resolve(dep)));
+
+    const res = entry && (entry.value || fnResolve(fnToResolve));
+
+    return entry.persist ? (instances[key] = res) : res;
+  }
+
   const resolve = type => {
-    const key = (typeof type === 'string'
+    const key = (typeof type === "string"
       ? type
       : type.name.toString()
     ).toUpperCase();
 
     let instance =
       instances[key] ||
-      (function() {
-        const entry = registry.find(
-          entry =>
-            (entry.name && entry.name.toUpperCase() === key) ||
-            entry.type.name.toString().toUpperCase() === key
-        );
-        const res =
-          entry &&
-          (entry.value ||
-            (entry.factory
-              ? entry.factory(resolve)
-              : Reflect.construct(
-                  entry.type,
-                  getDeps(entry.type).map(dep => resolve(dep))
-                )));
-
-        return res;
-      })();
+      privResolve(key);
 
     if (!instance) throw Error(`Can't Resolve for key ${key}`);
 
