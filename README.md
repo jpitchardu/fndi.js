@@ -1,6 +1,6 @@
 # fnDI.js
 
-Simple, functional, ligthweight, dependencyless DI library for JS
+Simple, functional, ligthweight, dependencyless DI/IOC library for JS
 
 ## Usage
 
@@ -86,6 +86,7 @@ interface Entry<T> {
   value?: T;
   factory?: resolve: Function => T;
   by?: Type;
+  persist?: boolean;
 }
 ```
 
@@ -105,3 +106,8 @@ const scopedMain = scope(registration, main);
 
 scopedMain(arg1, arg2);
 ```
+
+# TODO
+
+- [ ] async dependencies
+- [ ] Lazy dependencies
