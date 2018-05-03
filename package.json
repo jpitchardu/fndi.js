@@ -1,6 +1,6 @@
 {
   "name": "fndi",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Simple, functional, ligthweight, dependencyless DI library for JS",
   "main": "lib/index.js",
   "repository": "https://github.com/pichardoJ/fndi.js.git",
